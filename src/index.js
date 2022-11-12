@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.less';
 
 const Component = () => (
-  <BrowserRouter>
+  <BrowserRouter basename="/search-distance">
     <App />
   </BrowserRouter>
 );
