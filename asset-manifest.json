@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/search-distance/static/css/main.711bceac.css",
-    "main.js": "/search-distance/static/js/main.00945363.js",
+    "main.js": "/search-distance/static/js/main.8c7c3776.js",
     "index.html": "/search-distance/index.html",
     "main.711bceac.css.map": "/search-distance/static/css/main.711bceac.css.map",
-    "main.00945363.js.map": "/search-distance/static/js/main.00945363.js.map"
+    "main.8c7c3776.js.map": "/search-distance/static/js/main.8c7c3776.js.map"
   },
   "entrypoints": [
     "static/css/main.711bceac.css",
-    "static/js/main.00945363.js"
+    "static/js/main.8c7c3776.js"
   ]
 }
