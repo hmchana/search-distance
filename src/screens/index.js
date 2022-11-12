@@ -1,4 +1,6 @@
-import Routes from "./Routes";
+import Routes from './Routes';
 
-const routesIndex = ({ authorization }) => Routes({ authorization });
-export default routesIndex;
+export default Routes;
+
+// const routesIndex = () => Routes();
+// export default routesIndex;

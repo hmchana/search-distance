@@ -1,10 +1,6 @@
-import Auth from "../Auth";
-import Admin from "../Admin";
-import Client from "screens/Client";
-import { checkAuthorization } from "./helpers";
+import Home from '../Home';
+import Result from '../Result';
 
-const routes = [...Auth, ...Client, ...Admin];
+const routes = [...Home, ...Result];
 
-const routesIndex = ({ authorization }) => checkAuthorization({ routes, authorization });
-
-export default routesIndex;
+export default routes;

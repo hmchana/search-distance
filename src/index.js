@@ -1,24 +1,18 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./App";
-import { HashRouter } from "react-router-dom";
-import { ApolloProvider } from "react-apollo";
-import { ApolloProvider as ApolloProviderHooks } from "@apollo/react-hooks";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import { BrowserRouter } from 'react-router-dom';
 
-import { client } from "shared/graphql";
+import './index.less';
 
 const Component = () => (
-  <ApolloProvider client={client}>
-    <ApolloProviderHooks client={client}>
-      <HashRouter>
-        <App />
-      </HashRouter>
-    </ApolloProviderHooks>
-  </ApolloProvider>
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
 );
 
 const render = () => {
-  ReactDOM.render(<Component />, document.getElementById("root"));
+  ReactDOM.render(<Component />, document.getElementById('root'));
 };
 
 render();

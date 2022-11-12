@@ -1,16 +1,16 @@
-import { Layout } from 'antd';
-import React from 'react';
-import Header from './Header';
-import './styles.less';
+import { Layout } from "antd";
+import React from "react";
+import Header from "./Header";
+// import './styles.less';
 
-import Side from './Side';
+import Side from "./Side";
 
 const { Content } = Layout;
 
 export const Admin = OriginalComponent => {
   const Updated = props => {
     return (
-      <Layout style={{ minHeight: '100vh' }}>
+      <Layout style={{ minHeight: "100vh" }}>
         <Layout className="site-layout">
           <Side />
           <Content className="layout--admin">
@@ -32,7 +32,7 @@ export const Customer = OriginalComponent => {
         <Content
           style={{
             margin: 0,
-            minHeight: '80vh'
+            minHeight: "80vh"
           }}
         >
           <OriginalComponent {...props} />
