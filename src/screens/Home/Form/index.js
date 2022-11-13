@@ -33,7 +33,8 @@ const SearchForm = ({
   handleSearchDestination,
   destinationCities,
   loadingDestinationCities,
-  initialValues
+  initialValues,
+  isErrorExist
 }) => {
   const [form] = Form.useForm();
   const [disableSubmit, setDisableSubmit] = useState(false);
@@ -138,7 +139,7 @@ const SearchForm = ({
 
       <Divider className="d_10" />
       <Row type="flex" justify="space-between">
-        <Button disabled={disableSubmit} htmlType="submit">
+        <Button disabled={disableSubmit || isErrorExist} htmlType="submit">
           Submit
         </Button>
       </Row>

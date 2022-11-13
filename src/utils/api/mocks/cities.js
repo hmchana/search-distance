@@ -4,9 +4,21 @@ import { handleSearch, haversineDistance } from 'utils/miscellenaous';
 const apiMocks = {
   search: keyword => {
     return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(handleSearch(keyword, CITIES));
-      }, 1000);
+      if (keyword === 'fail')
+        setTimeout(() => {
+          reject('Error, keyword fail was used !');
+        }, 1000);
+
+      let result = handleSearch(keyword, CITIES);
+
+      if (result.length === 0)
+        setTimeout(() => {
+          reject(`Error, city name ${keyword} not available`);
+        }, 1000);
+      else
+        setTimeout(() => {
+          resolve(result);
+        }, 1000);
     });
   },
   calculateDistance: (cord1, cord2) => {
@@ -19,5 +31,3 @@ const apiMocks = {
 };
 
 export default apiMocks;
-
-// haversineDistance

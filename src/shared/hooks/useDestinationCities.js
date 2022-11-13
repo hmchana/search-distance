@@ -7,7 +7,7 @@ const useDestinationCities = () => {
   const [keyword, setKeyword] = useState('');
   const [result, setResult] = useState({
     loading: false,
-    errors: null,
+    error: null,
     data: []
   });
 
@@ -15,12 +15,12 @@ const useDestinationCities = () => {
 
   const fetchData = async () => {
     try {
-      setResult(prev => ({ ...prev, loading: true }));
+      setResult(prev => ({ ...prev, error: null, loading: true }));
       const response = await apiMocks.search(keyword);
 
       setResult(prev => ({ ...prev, data: response, loading: false }));
     } catch (error) {
-      setResult(prev => ({ ...prev, errors: 'An Error Occured', loading: false }));
+      setResult(prev => ({ ...prev, error, loading: false }));
     }
   };
 
@@ -30,11 +30,11 @@ const useDestinationCities = () => {
     if (keyword.length > 0) fetchDataMemoized();
   }, [fetchDataMemoized, keyword]);
 
-  const { loading, errors, data } = result;
+  const { loading, error, data } = result;
 
   return {
     loadingDestinationCities: loading,
-    errors,
+    errorDestination: error,
     destinationCities: data,
     handleSearchDestination
   };

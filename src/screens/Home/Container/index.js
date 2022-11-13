@@ -1,4 +1,4 @@
-import { Card } from 'antd';
+import { Alert, Card } from 'antd';
 import React from 'react';
 import Search from '../Form';
 
@@ -13,9 +13,14 @@ const Container = () => {
   const { search } = useLocation();
   const { cities } = useCities();
 
-  const { loadingOriginCities, originCities, handleSearch } = useOrigineCities();
-  const { loadingDestinationCities, destinationCities, handleSearchDestination } =
-    useDestinationCities();
+  const { loadingOriginCities, originCities, errorOrigin, handleSearch } =
+    useOrigineCities();
+  const {
+    loadingDestinationCities,
+    destinationCities,
+    errorDestination,
+    handleSearchDestination
+  } = useDestinationCities();
 
   const { city_origin, city_destination, cities_intermediates } = handleParse(search);
 
@@ -29,28 +34,35 @@ const Container = () => {
     );
   };
 
+  const isErrorExist = Boolean(errorOrigin) || Boolean(errorDestination);
+  const errorMessage = errorOrigin || errorDestination;
+
   return (
-    <Card className="card m-t-50">
-      <Search
-        {...{
-          initialValues: {
-            city_origin: city_origin || '',
-            city_destination: city_destination || '',
-            cities_intermediates: !!cities_intermediates
-              ? cities_intermediates.split(',')
-              : []
-          },
-          cities,
-          originCities,
-          loadingOriginCities,
-          handleSubmit,
-          handleSearch,
-          handleSearchDestination,
-          destinationCities,
-          loadingDestinationCities
-        }}
-      />
-    </Card>
+    <div className="m-t-50">
+      {isErrorExist && <Alert type="error" message={errorMessage} />}
+      <Card className="card ">
+        <Search
+          {...{
+            initialValues: {
+              city_origin: city_origin || '',
+              city_destination: city_destination || '',
+              cities_intermediates: !!cities_intermediates
+                ? cities_intermediates.split(',')
+                : []
+            },
+            isErrorExist,
+            cities,
+            originCities,
+            loadingOriginCities,
+            handleSubmit,
+            handleSearch,
+            handleSearchDestination,
+            destinationCities,
+            loadingDestinationCities
+          }}
+        />
+      </Card>
+    </div>
   );
 };
 
